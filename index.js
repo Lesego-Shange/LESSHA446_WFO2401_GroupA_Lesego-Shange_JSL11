@@ -30,7 +30,17 @@ function initializeData() {
 }
 
 // TASK: Get elements from the DOM
-const elements = {};
+const elements = {
+  headerBoardName: document.getElementById("header-board-name"), // Getting header board name element
+  columnDivs: document.querySelectorAll(".column-div"), // Getting all column div elements
+  showSideBarBtn: document.getElementById("show-side-bar-btn"), // Getting show sidebar button element
+  hideSideBarBtn: document.getElementById("hide-side-bar-btn"), // Getting hide sidebar button element
+  themeSwitch: document.getElementById("switch"), // Getting theme switch element
+  createNewTaskBtn: document.getElementById("add-new-task-btn"), // Getting create new task button element
+  modalWindow: document.getElementById("new-task-modal-window"), // Getting new task modal window element
+  filterDiv: document.getElementById("filterDiv"), // Getting filter div element
+  editTaskModal: document.querySelector(".edit-task-modal-window"), // Getting edit task modal window element
+};
 
 let activeBoard = "";
 
