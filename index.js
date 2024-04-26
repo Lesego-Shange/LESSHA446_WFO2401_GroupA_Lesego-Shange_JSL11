@@ -13,12 +13,19 @@ import { initialData } from "./initialData.js";
  * **********************************************************************************************************************************************/
 
 // Function checks if local storage already has data, if not it loads initialData to localStorage
+// Function checks if local storage already has data, if not it loads initialData to localStorage
 function initializeData() {
-  if (!localStorage.getItem("tasks")) {
-    localStorage.setItem("tasks", JSON.stringify(initialData));
+  // Check if tasks data exists in localStorage
+  if (!localStorage.getItem("taskList")) {
+    // If not, set initialData to localStorage
+    localStorage.setItem("taskList", JSON.stringify(initialData));
     localStorage.setItem("showSideBar", "true");
   } else {
     console.log("Data already exists in localStorage");
+  }
+  // Check if showSideBar flag exists in localStorage, if not set it to true
+  if (!localStorage.getItem("showSideBar")) {
+    localStorage.setItem("showSideBar", "true");
   }
 }
 
