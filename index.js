@@ -212,7 +212,13 @@ function addTask(event) {
   event.preventDefault();
 
   //Assign user input to the task object
-  const task = {};
+  const task = {
+    id: new Date().getTime(),
+    title: event.target.elements["title-input"].value,
+    description: event.target.elements["desc-input"].value,
+    status: event.target.elements["select-status"].value,
+    board: activeBoard,
+  };
   const newTask = createNewTask(task);
   if (newTask) {
     addTaskToUI(newTask);
