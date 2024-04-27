@@ -261,7 +261,17 @@ function toggleSidebar(show) {
   }
 }
 
-function toggleTheme() {}
+function toggleTheme() {
+  // Implement toggle theme functionality
+  const isLightTheme = document.getElementById("switch").checked;
+  document.body.classList.toggle("light-theme", isLightTheme);
+  localStorage.setItem("light-theme", isLightTheme ? "enabled" : "disabled");
+  const logoImg = document.getElementById("logo");
+
+  logoImg.src = isLightTheme
+    ? "./assets/logo-light.svg"
+    : "./assets/logo-dark.svg";
+}
 
 function openEditTaskModal(task) {
   // Set task details in modal inputs
