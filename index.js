@@ -229,7 +229,37 @@ function addTask(event) {
   }
 }
 
-function toggleSidebar(show) {}
+function toggleSidebar(show) {
+  const sideBarDiv = document.getElementById("side-bar-div"); // Getting sidebar div element
+  const layoutDiv = document.getElementById("layout"); // Getting layout div element
+  const showSideBarBtn = document.getElementById("show-side-bar-btn"); // Getting show sidebar button element
+  const boardNameContainer = document.getElementById("header-board-name"); // Getting board name container element
+  const tasksContainers = document.querySelectorAll(".tasks-container"); // Getting all tasks container elements
+
+  if (show) {
+    // Show sidebar
+    sideBarDiv.style.transform = "translateX(0)"; // Translating sidebar to show
+    layoutDiv.style.width = "calc(100% - 350px)"; // Adjusting layout width
+    showSideBarBtn.style.display = "none"; // Hiding show sidebar button
+    localStorage.setItem("showSideBar", "true"); // Setting show sidebar flag in localStorage
+
+    // Revert board name container and tasks container to original styles
+    boardNameContainer.style.width = ""; // Revert width to auto
+    tasksContainers.forEach((container) => (container.style.width = "")); // Revert width to auto for all tasks containers
+  } else {
+    // Hide sidebar
+    sideBarDiv.style.transform = "translateX(-100%)"; // Translating sidebar to hide
+    layoutDiv.style.width = "100%"; // Setting layout width to full
+    showSideBarBtn.style.display = "block"; // Showing show sidebar button
+    layoutDiv.style.width = "100%"; // Full width when sidebar is hidden
+
+    // Expand board name container and tasks containers to take over viewport
+    boardNameContainer.style.width = "100vw"; // Expand to full viewport width
+    tasksContainers.forEach((container) => (container.style.width = "100vw")); // Expand to full viewport width for all tasks containers
+
+    localStorage.setItem("showSideBar", "false"); // Setting show sidebar flag in localStorage
+  }
+}
 
 function toggleTheme() {}
 
